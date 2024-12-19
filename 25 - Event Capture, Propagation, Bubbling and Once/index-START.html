@@ -44,6 +44,20 @@
 <button></button>
 <script>
 
+  const divs = document.querySelectorAll('div');
+
+  //stop propagation makes the bubbling not happen
+  function logText(e) {
+    console.log(this.classList.value);
+    e.stopPropagation();
+  }
+
+  //once will trigger that event just once and if you have to trigger that event again you'll need to reload the page
+  divs.forEach(div => div.addEventListener('click', logText, {
+    capture: false,
+    once: true
+  }));
+
 </script>
 </body>
 </html>
